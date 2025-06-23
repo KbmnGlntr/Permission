@@ -2,7 +2,6 @@
 
 export default {
   async fetch(request, env, ctx) {
-  
     const url = new URL(request.url);
     const userAgent = request.headers.get('user-agent') || '';
     const pathname = url.pathname;
@@ -16,13 +15,14 @@ export default {
         return new Response('Access Denied', { status: 403 });
     }
 
-    if (!userAgent.includes('Mozilla') || 
+    if (userAgent && 
+        (!userAgent.includes('Mozilla') || 
         !(userAgent.includes('Chrome') || 
         userAgent.includes('Firefox') ||   
         userAgent.includes('Safari') ||
         userAgent.includes('Edge') ||
         userAgent.includes('Opera') ||
-        userAgent.includes('Brave'))) {
+        userAgent.includes('Brave')))) {
         return new Response('Access Denied', { status: 403 });
     }
 
