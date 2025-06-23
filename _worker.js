@@ -15,7 +15,7 @@ export default {
         return new Response('Access Denied', { status: 403 });
     }
 
-    if (userAgent && !userAgent.includes('wget') && !userAgent.includes('curl') &&
+    if (userAgent && !userAgent.includes('Wget') && !userAgent.includes('curl') &&
         (!userAgent.includes('Mozilla') || 
         !(userAgent.includes('Chrome') || 
         userAgent.includes('Firefox') ||   
