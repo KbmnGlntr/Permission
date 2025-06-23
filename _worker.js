@@ -2,6 +2,7 @@
 
 export default {
   async fetch(request, env, ctx) {
+  
     const url = new URL(request.url);
     const userAgent = request.headers.get('user-agent') || '';
     const pathname = url.pathname;
@@ -10,12 +11,11 @@ export default {
         userAgent.includes('WebCopier') || 
         userAgent.includes('Teleport') ||
         userAgent.includes('Webripper') ||
-        userAgent.includes('Offline') ||
-        userAgent.includes('Downloader')) {
+        userAgent.includes('Offline')) {
         return new Response('Access Denied', { status: 403 });
     }
 
-    if (userAgent && 
+    if (userAgent && !userAgent.includes('wget') && !userAgent.includes('curl') &&
         (!userAgent.includes('Mozilla') || 
         !(userAgent.includes('Chrome') || 
         userAgent.includes('Firefox') ||   
