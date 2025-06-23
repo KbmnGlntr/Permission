@@ -26,7 +26,7 @@ export default {
         return new Response('Access Denied', { status: 403 });
     }
 
-    if (pathname !== '/acess' && pathname !== '/acces') {
+    if (pathname !== '/access' && pathname !== '/acces') {
         return new Response('Access Denied!', { status: 403 });
     }
 
